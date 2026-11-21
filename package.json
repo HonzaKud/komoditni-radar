@@ -1,0 +1,14 @@
+{
+  "name": "komoditni-radar",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "validate": "node tools/validate.mjs",
+    "build": "node tools/build.mjs",
+    "collect": "node tools/collect.mjs",
+    "preview": "python -m http.server 4340 --bind 127.0.0.1 --directory dist"
+  },
+  "engines": {"node": ">=22"}
+}
