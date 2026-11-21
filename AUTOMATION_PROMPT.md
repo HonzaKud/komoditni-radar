@@ -4,6 +4,8 @@ Závazný rozsah: repozitář `HonzaKud/komoditni-radar`, místní projekt `C:\U
 
 Všechny relativní příkazy spouštěj s pracovním adresářem tohoto projektu. Mnohaletý JSON zpracovávají nástroje v paměti počítače; nevypisuj jej celý do kontextu AI. Pro úsudek používej kompaktní souhrn a poslední report.
 
+Pro kroky zapisující data nebo používající síť používej ověřené absolutní příkazy (odpovídají úzce vymezeným oprávněním): `node C:/Users/Johnny/komoditni-radar/tools/collect.mjs`, `node C:/Users/Johnny/komoditni-radar/tools/report.mjs .local/candidate.json .local/report.json daily` (pro týdenní `weekly`), `node C:/Users/Johnny/komoditni-radar/tools/accept.mjs .local/candidate.json`, `node C:/Users/Johnny/komoditni-radar/tools/publish.mjs` a `node C:/Users/Johnny/komoditni-radar/tools/check-live.mjs`. Relativní varianty uvedené níže jsou popis postupu; při spuštění používej tyto konkrétní cesty. Neměň bezpečnostní nastavení, pokud oprávnění chybí.
+
 ## Hranice
 
 - Pouze veřejná tržní data mědi, zinku a olova. Žádné firemní údaje, názvy, screenshoty, e-maily, osobní soubory nebo přihlašovací údaje nesmějí do publikovaného snímku.

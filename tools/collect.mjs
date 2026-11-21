@@ -8,6 +8,10 @@ import {validateSnapshot} from './validate.mjs';
 import {collectInflation} from './inflation.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const metals={copper:{code:'Cu',name:'měď'},zinc:{code:'Zn',name:'zinek'},lead:{code:'Pb',name:'olovo'}};
+export function collectionStartYear(data,year,history=false,requested=null){
+  if(requested!==null)return requested;if(history||!data.market?.length)return 2021;let first=year;
+  for(const metal of Object.keys(metals))for(const field of ['cash','threeMonth','stocks']){const dates=data.market.filter(r=>r.metal===metal&&typeof r[field]==='number'&&Number.isFinite(r[field])).map(r=>r.date).sort().slice(-5);if(dates.length)first=Math.min(first,Number(dates[0].slice(0,4)));}return first;
+}
 const months=['january','february','march','april','may','june','july','august','september','october','november','december'];
 const german=['januar','februar','märz','april','mai','juni','juli','august','september','oktober','november','dezember'];
 const clean=s=>s.replace(/<[^>]*>/g,' ').replace(/&nbsp;|&#160;/g,' ').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim();
@@ -43,7 +47,7 @@ async function download(url){
 export async function collect({history=false,fromYear=null,output=path.join(root,'.local/candidate.json')}={}){
   const now=new Date().toISOString(),startedAt=now,year=Number(now.slice(0,4));let data;
   try{data=JSON.parse(await readFile(path.join(root,'data/snapshot.json'),'utf8'));const check=validateSnapshot(data);if(!check.ok)throw Error('Původní snímek není validní: '+check.errors.join('; '));}catch(error){if(error.code!=='ENOENT')throw error;data={schemaVersion:1,generatedAt:now,sources:[],market:[],fx:[],inflation:[],dailyReports:[],weeklyReports:[],runs:[],exclusions:[],notices:[]};history=true;}
-  const first=fromYear??(history?2021:year);if(!Number.isInteger(first)||first<2021||first>year)throw Error('Neplatný počáteční rok.');
+  const first=collectionStartYear(data,year,history,fromYear);if(!Number.isInteger(first)||first<2021||first>year)throw Error('Neplatný počáteční rok.');
   const target=path.resolve(output);if(!target.startsWith(path.join(root,'.local')+path.sep))throw Error('Kandidát musí být v .local/.');
   const sourceStatus=[],missing=[],notices=[],market=new Map(data.market.map(r=>[r.metal+'/'+r.date,r])),fx=new Map(data.fx.map(r=>[r.date,r]));let loaded=0;
   const addSource=s=>{if(!data.sources.some(old=>old.id===s.id))data.sources.push(s);};

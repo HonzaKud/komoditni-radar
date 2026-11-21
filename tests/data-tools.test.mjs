@@ -6,13 +6,17 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {validateSnapshot} from '../tools/validate.mjs';
 import {acceptCandidate} from '../tools/accept.mjs';
-import {parseCnb,parseWestmetall} from '../tools/collect.mjs';
+import {parseCnb,parseWestmetall,collectionStartYear} from '../tools/collect.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..','.local');
 function fixture(){return {schemaVersion:1,generatedAt:'2026-11-21T09:00:00Z',sources:[{id:'west',name:'Westmetall',url:'https://www.westmetall.com/',kind:'secondary'},{id:'cnb',name:'ČNB',url:'https://www.cnb.cz/',kind:'primary'}],market:[{metal:'copper',date:'2026-11-19',cash:12570,threeMonth:null,stocks:null,sourceIds:['west'],verification:'Dvě jazykové verze stejného zdroje.',retrievedAt:'2026-11-21T08:00:00Z',reasons:{threeMonth:'Zdroj chybí.',stocks:'Zdroj chybí.'}}],fx:[{date:'2026-11-19',usdCzk:22,eurCzk:24,sourceId:'cnb',retrievedAt:'2026-11-21T08:00:00Z'}],inflation:[],dailyReports:[],weeklyReports:[],runs:[],exclusions:[],notices:[]};}
 test('ČNB mění během roku seznam měn; parser respektuje novou hlavičku',()=>{
   const rows=parseCnb('Date|1 EUR|100 RUB|1 USD\n01.03.2022|25|20|22\nDate|1 USD|1 EUR\n02.03.2022|23|26\n');assert.deepEqual(rows.map(r=>[r.usdCzk,r.eurCzk]),[[22,25],[23,26]]);
   const header='<tr><th>date</th><th>LME Cash</th><th>LME 3-month</th><th>LME stock</th></tr>';
   assert.equal(parseWestmetall(header+'<tr><td>20. November 2026</td><td>12,230.50</td><td>12,237.00</td><td>332,025</td></tr>')[0].cash,12230.5);
+});
+test('Kontrola posledních pěti pozorování pokračuje i přes hranici roku',()=>{
+  const market=['2026-12-24','2026-12-29','2026-12-30','2026-12-31','2027-01-04'].map(date=>({metal:'copper',date,cash:100,threeMonth:101,stocks:50}));assert.equal(collectionStartYear({market},2027),2026);
+  const full=[4,5,6,7,8].map(n=>({metal:'copper',date:'2027-01-'+String(n).padStart(2,'0'),cash:100,threeMonth:101,stocks:50}));assert.equal(collectionStartYear({market:full},2027),2027);
 });
 test('Validátor odmítne ztracené důvody, duplicity, nečíselné ceny a nebezpečné URL',()=>{
   assert.equal(validateSnapshot(fixture()).ok,true);
