@@ -2,6 +2,8 @@
 
 Aktualizováno 21. 11. 2026.
 
+24. 11. 2026: první pravidelná publikace odhalila limit výstupu child_process při čtení více než 2MB snapshotu přes git show. Uživatel výslovně zadal opravu; tools/publish.mjs má nyní omezený 64MB buffer (commit d9d1e3b). Nový sběr bez omezení potvrdil obchodní den 23. 11., celkem 4 467 tržních řádků a 1 481 kurzů. Shodný denní report nezaložil další revizi. Všech 12 testů, validace a build prošly; datový commit 62d011b byl úspěšně nahrán. Denní i opožděný týdenní report jsou z 24. 11. (r1), bez zpětného datování. Pravidelná úloha nadále mění pouze data.
+
 ## Cíl
 Nezávislý statický Komoditní radar pro měď, zinek a olovo na osobním GitHubu HonzaKud. Web funguje bez AI; ranní běh pouze aktualizuje ověřený JSON. Výpadek nesmí znefunkčnit web nebo přepsat poslední správná data.
 
