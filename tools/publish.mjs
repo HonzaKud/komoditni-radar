@@ -6,7 +6,9 @@ import {validateSnapshot} from './validate.mjs';
 import {assertPreserved} from './accept.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-function git(...args){return execFileSync('git',args,{cwd:root,encoding:'utf8',stdio:['ignore','pipe','pipe'],env:{...process.env,GIT_TERMINAL_PROMPT:'0'}}).trimEnd();}
+// git show reads the complete historical snapshot (already over 2 MB).
+// Node's default 1 MB output buffer otherwise aborts before validation.
+function git(...args){return execFileSync('git',args,{cwd:root,encoding:'utf8',maxBuffer:64*1024*1024,stdio:['ignore','pipe','pipe'],env:{...process.env,GIT_TERMINAL_PROMPT:'0'}}).trimEnd();}
 function run(...args){execFileSync(process.execPath,args,{cwd:root,stdio:'inherit'});}
 function pushExact(commit){try{git('push','origin',commit+':refs/heads/main');}catch(error){const remote=git('ls-remote','origin','refs/heads/main').split(/\s/)[0];if(remote!==commit)throw error;}}
 function onlySnapshot(commit){return git('diff-tree','--no-commit-id','--name-only','-r',commit)==='data/snapshot.json';}
