@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-24T09:09:13.501Z",
+  "generatedAt": "2026-11-25T11:37:29.679Z",
   "sources": [
     {
       "id": "west-copper-en-2021",
@@ -282,6 +282,12 @@
       "id": "reuters-2026-11-23",
       "name": "Reuters přes Business Recorder · 23. 11. 2026",
       "url": "https://www.brecorder.com/news/40450362/copper-steadies-after-ai-rout-lead-hits-four-year-low",
+      "kind": "news"
+    },
+    {
+      "id": "reuters-2026-11-24",
+      "name": "Reuters přes Business Recorder · 24. 11. 2026",
+      "url": "https://www.brecorder.com/news/40450497",
       "kind": "news"
     }
   ],
@@ -62827,6 +62833,48 @@
       "cash": 3630.5,
       "threeMonth": 3488,
       "stocks": 144650
+    },
+    {
+      "metal": "copper",
+      "date": "2026-11-24",
+      "sourceIds": [
+        "west-copper-en-2026",
+        "west-copper-de-2026"
+      ],
+      "verification": "Shoda EN/DE stejného sekundárního zdroje; nejde o nezávislé ověření.",
+      "retrievedAt": "2026-11-25T11:36:47.480Z",
+      "reasons": {},
+      "cash": 12035,
+      "threeMonth": 12055,
+      "stocks": 337825
+    },
+    {
+      "metal": "lead",
+      "date": "2026-11-24",
+      "sourceIds": [
+        "west-lead-en-2026",
+        "west-lead-de-2026"
+      ],
+      "verification": "Shoda EN/DE stejného sekundárního zdroje; nejde o nezávislé ověření.",
+      "retrievedAt": "2026-11-25T11:36:47.480Z",
+      "reasons": {},
+      "cash": 1786,
+      "threeMonth": 1828,
+      "stocks": 256950
+    },
+    {
+      "metal": "zinc",
+      "date": "2026-11-24",
+      "sourceIds": [
+        "west-zinc-en-2026",
+        "west-zinc-de-2026"
+      ],
+      "verification": "Shoda EN/DE stejného sekundárního zdroje; nejde o nezávislé ověření.",
+      "retrievedAt": "2026-11-25T11:36:47.480Z",
+      "reasons": {},
+      "cash": 3665,
+      "threeMonth": 3508,
+      "stocks": 143425
     }
   ],
   "fx": [
@@ -73196,6 +73244,13 @@
       "eurCzk": 24.455,
       "sourceId": "cnb",
       "retrievedAt": "2026-11-24T08:48:22.639Z"
+    },
+    {
+      "date": "2026-11-24",
+      "usdCzk": 22.279,
+      "eurCzk": 24.43,
+      "sourceId": "cnb",
+      "retrievedAt": "2026-11-25T11:36:47.480Z"
     }
   ],
   "inflation": [
@@ -75451,6 +75506,99 @@
       "id": "daily-2026-11-24-r1",
       "revision": 1,
       "createdAt": "2026-11-24T09:00:18.104Z"
+    },
+    {
+      "date": "2026-11-25",
+      "title": "Měď: nižší cena a vyšší zásoby · Zinek: denní odraz · Olovo: další oslabení",
+      "summary": "Poslední ověřený den přinesl rozdílný vývoj kovů. U mědi nižší cenu doprovází růst skladových zásob. Zinek se denně zotavil při úbytku zásob a širší backwardation, týdenní změna však zůstává záporná. Olovo mírně oslabilo i přes úbytek zásob. Přehled vychází z posledních zveřejněných denních dat, nikoli dnešních průběžných kotací.",
+      "metals": [
+        "copper",
+        "zinc",
+        "lead"
+      ],
+      "risk": {
+        "overall": 4,
+        "copper": 4,
+        "zinc": 3,
+        "lead": 3
+      },
+      "riskNotes": {
+        "overall": "Smíšený denní vývoj nepotvrzuje plošný obrat, týdenní cenové změny zůstávají záporné. Riziko je úsudek AI.",
+        "copper": "Pokles ceny současně s růstem zásob zvyšuje nejistotu krátkodobé rovnováhy; nevysvětluje sám příčinu skladového přírůstku.",
+        "zinc": "Denní zotavení, úbytek zásob a širší backwardation mohou ukazovat napjatější okamžitou dostupnost. Proti tomu stojí záporný týdenní trend.",
+        "lead": "Cena dále mírně klesá a contango přetrvává. Úbytek zásob zatím nedoprovází potvrzený obrat ceny."
+      },
+      "factors": [
+        {
+          "type": "fact",
+          "title": "Měď v úterý opět pod tlakem",
+          "text": "Reuters 24. listopadu popsal ústup mědi a silnější dolar. Zpráva sleduje průběžné tříměsíční kotace; jejich úroveň není zaměnitelná s denní řadou Official v radaru.",
+          "sourceIds": [
+            "reuters-2026-11-24"
+          ],
+          "urls": [
+            "https://www.brecorder.com/news/40450497"
+          ]
+        },
+        {
+          "type": "interpretation",
+          "title": "Rozdílné skladové signály",
+          "text": "Denní skladový přírůstek mědi kontrastuje s úbytkem zinku a olova. Jde o signál registrovaných skladů, ne úplnou bilanci světové nabídky a poptávky.",
+          "sourceIds": [
+            "west-copper-en-2026",
+            "west-zinc-en-2026",
+            "west-lead-en-2026"
+          ],
+          "urls": []
+        },
+        {
+          "type": "scenario",
+          "title": "Odraz zinku potřebuje potvrzení",
+          "text": "Pokračující stabilizace ceny při úbytku zásob může odraz podpořit; obnovený pokles ceny a uvolnění spreadu by tuto variantu oslabily.",
+          "sourceIds": [
+            "west-zinc-en-2026"
+          ],
+          "urls": []
+        }
+      ],
+      "outlook": "V příštích 24–72 hodinách sleduj, zda se zotavení zinku udrží a zda přírůstek zásob mědi pokračuje. U olova požaduj potvrzení cenou, nikoli pouze pokles skladových zásob. Jediný den nepovažuj za změnu trendu.",
+      "watch": [
+        "Další společně datované Cash, 3M a skladové záznamy.",
+        "Přírůstek zásob mědi a přetrvání backwardation zinku.",
+        "Kurz ČNB a rozdíl mezi referenční cenou a konkrétní dodavatelskou nabídkou."
+      ],
+      "decisionPoints": [
+        "Pro konkrétní nákup porovnej referenční cenu s vlastní nabídkou dodavatele, prémií a kurzem.",
+        "Při vyšší volatilitě zvaž rozložení termínů podle skutečné spotřeby; radar nezná zásoby, smlouvy ani finanční situaci odběratele.",
+        "Před závěrem zkontroluj datum každého údaje. Chybějící řada není nulová hodnota ani potvrzení stability."
+      ],
+      "sources": [
+        "reuters-2026-11-24",
+        "west-copper-en-2026",
+        "west-copper-de-2026",
+        "west-zinc-en-2026",
+        "west-zinc-de-2026",
+        "west-lead-en-2026",
+        "west-lead-de-2026",
+        "cnb",
+        "csu-cpi-2025",
+        "eurostat-cz-ppi-2021",
+        "eurostat-ea-hicp-2025",
+        "bls-us-cpi-nsa"
+      ],
+      "dataThrough": "2026-11-24",
+      "sections": [
+        {
+          "title": "Aktuálnost dat",
+          "text": "Vydáno 25. listopadu; poslední dostupné tržní řádky a kurz ČNB jsou z 24. listopadu. Inflační indexy zůstávají na posledních zveřejněných měsících. EN/DE jsou jazykové verze stejného sekundárního zdroje."
+        }
+      ],
+      "scenarios": [],
+      "bullBear": [],
+      "forecasts": [],
+      "id": "daily-2026-11-25-r1",
+      "revision": 1,
+      "createdAt": "2026-11-25T11:37:29.679Z"
     }
   ],
   "weeklyReports": [
@@ -76500,6 +76648,96 @@
           "message": "Poslední dostupný měsíc 2026-10; kontrola 2026-11-21. "
         }
       ]
+    },
+    {
+      "id": "collect-2026-11-25T11-36-56-025Z-d72b8f",
+      "startedAt": "2026-11-25T11:36:47.480Z",
+      "finishedAt": "2026-11-25T11:36:56.025Z",
+      "status": "ok",
+      "loaded": 4,
+      "missing": [],
+      "validation": "passed",
+      "message": "Deterministický sběr veřejných tabulek. Starší historie a reporty zachovány.",
+      "sourceStatus": [
+        {
+          "sourceId": "uk-bank-holidays",
+          "status": "ok",
+          "latestDate": "2028-12-26",
+          "message": "Kalendář britských bankovních svátků pro výpočet pokrytí."
+        },
+        {
+          "sourceId": "west-copper-en-2026",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Načtena jazyková verze stejného zdroje."
+        },
+        {
+          "sourceId": "west-copper-de-2026",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Načtena jazyková verze stejného zdroje."
+        },
+        {
+          "sourceId": "west-zinc-en-2026",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Načtena jazyková verze stejného zdroje."
+        },
+        {
+          "sourceId": "west-zinc-de-2026",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Načtena jazyková verze stejného zdroje."
+        },
+        {
+          "sourceId": "west-lead-en-2026",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Načtena jazyková verze stejného zdroje."
+        },
+        {
+          "sourceId": "west-lead-de-2026",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Načtena jazyková verze stejného zdroje."
+        },
+        {
+          "sourceId": "wieland",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Dvě shodná načtení; pouze Cash mědi a zinku, přednost má hlavní zdroj."
+        },
+        {
+          "sourceId": "cnb",
+          "status": "ok",
+          "latestDate": "2026-11-24",
+          "message": "Roční tabulka ČNB 2026"
+        },
+        {
+          "sourceId": "csu-cpi-2025",
+          "status": "ok",
+          "latestDate": "2026-10-01",
+          "message": "Poslední dostupný měsíc 2026-10; kontrola 2026-11-21. "
+        },
+        {
+          "sourceId": "eurostat-cz-ppi-2021",
+          "status": "ok",
+          "latestDate": "2026-09-01",
+          "message": "Poslední dostupný měsíc 2026-09; kontrola 2026-11-25. "
+        },
+        {
+          "sourceId": "eurostat-ea-hicp-2025",
+          "status": "ok",
+          "latestDate": "2026-10-01",
+          "message": "Poslední dostupný měsíc 2026-10; kontrola 2026-11-21. "
+        },
+        {
+          "sourceId": "bls-us-cpi-nsa",
+          "status": "ok",
+          "latestDate": "2026-10-01",
+          "message": "Poslední dostupný měsíc 2026-10; kontrola 2026-11-21. "
+        }
+      ]
     }
   ],
   "exclusions": [
@@ -76598,6 +76836,6 @@
       2028
     ],
     "sourceId": "uk-bank-holidays",
-    "retrievedAt": "2026-11-24T09:09:04.470Z"
+    "retrievedAt": "2026-11-25T11:36:47.480Z"
   }
 }
